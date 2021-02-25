@@ -7,6 +7,7 @@ const Countdown = () => {
   const timeMath = .05 * 60
   const [time, setTime] = useState(timeMath)
   const [isActive, setIsActive] = useState(false)
+  const [hasFinished, setHasFinisted] = useState(false)
 
   const mins = Math.floor(time / 60)
   const secs = time % 60
@@ -30,7 +31,8 @@ const Countdown = () => {
         setTime(time - 1)
       }, 1000)
     } else if (isActive && time == 0) {
-      resetCD()
+      setHasFinisted(true)
+      setIsActive(false)
     }
   }, [isActive, time])
 
@@ -47,23 +49,32 @@ const Countdown = () => {
           <span>{secR}</span>
         </div>
       </div>
-      {
-        isActive ? (
-          <button
-            type="button"
-            className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
-            onClick={resetCD}>
-            Abandonar ciclo
-          </button>
-        ) : (
-            <button
-              type="button"
-              className={styles.countdownButton}
-              onClick={startCD}>
-              Iniciar um ciclo
-            </button>
-          )
-      }
+      { hasFinished ? (
+        <button
+          disabled
+          className={`${styles.countdownButton}`}>
+          Ciclo encerrado
+        </button>
+      ) : (
+          <>
+            { isActive ? (
+              <button
+                type="button"
+                className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+                onClick={resetCD}>
+                Abandonar ciclo
+              </button>
+            ) : (
+                <button
+                  type="button"
+                  className={styles.countdownButton}
+                  onClick={startCD}>
+                  Iniciar um ciclo
+                </button>
+              )
+            }
+          </>
+        )}
     </div>
   )
 }
