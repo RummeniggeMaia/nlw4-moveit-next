@@ -38,6 +38,7 @@ export const CountdownProvider = ({ children }: CountdownProviderProps) => {
     clearTimeout(countdownTimeout)
     setIsActive(false)
     setTime(timeMath)
+    setHasFinisted(false)
   }
 
   useEffect(() => {
