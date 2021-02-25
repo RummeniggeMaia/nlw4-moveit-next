@@ -1,4 +1,4 @@
-import { createContext, useState, ReactNode } from 'react'
+import { createContext, useState, ReactNode, useEffect } from 'react'
 import challenges from '../../challenges.json'
 
 interface Challenge {
@@ -34,6 +34,9 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
 
   const experienceToNextLevel = Math.pow(((level + 1) * 4), 2)
 
+  useEffect(() => {
+    Notification.requestPermission()
+  }, [])
   const levelUp = () => {
     setLevel(level + 1)
   }
@@ -43,6 +46,12 @@ export const ChallengesProvider = ({ children }: ChallengesProviderProps) => {
     const challenge = challenges[ramdomChallengeIndex]
 
     setActiveChallenge(challenge)
+
+    if (Notification.permission === 'granted') {
+      new Notification('Novo desafio 🎉', {
+        body: `Valendo ${challenge.amount} xp!`
+      })
+    }
   }
 
   const resetChallenge = () => {
