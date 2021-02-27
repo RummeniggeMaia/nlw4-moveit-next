@@ -41,8 +41,6 @@
   width: 100%;
   height: 5rem;
 
-  margin-top: 2rem;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,5 +74,18 @@
 .countdownButton:disabled {
   background: var(--white);
   color: var(--text);
-  cursor: not-allowed
+  cursor: not-allowed;
+}
+
+.countdownButtonBox {
+  margin-top: 2rem;
+}
+
+.borderLoading {
+  height: 4px;
+  width: 4px;
+  margin-top: -4px;
+  border-radius: 5px;
+  border: 0px;
+  border-bottom: 4px solid var(--green);
 }

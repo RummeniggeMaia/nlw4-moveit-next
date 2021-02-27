@@ -8,6 +8,7 @@ let countdownTimeout: NodeJS.Timeout
 
 const Countdown = () => {
   const {
+    time,
     mins,
     secs,
     hasFinished,
@@ -15,6 +16,8 @@ const Countdown = () => {
     resetCD,
     startCD
   } = useContext(CountdownContext)
+
+  const loading = Math.round((2 * 60) * 100) / time - 100
 
   const [minL, minR] = String(mins).padStart(2, '0').split('')
   const [secL, secR] = String(secs).padStart(2, '0').split('')
@@ -32,32 +35,35 @@ const Countdown = () => {
           <span>{secR}</span>
         </div>
       </div>
-      { hasFinished ? (
-        <button
-          disabled
-          className={`${styles.countdownButton}`}>
-          Ciclo encerrado
-        </button>
-      ) : (
-          <>
-            { isActive ? (
-              <button
-                type="button"
-                className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
-                onClick={resetCD}>
-                Abandonar ciclo
-              </button>
-            ) : (
+      <div className={styles.countdownButtonBox}>
+        {hasFinished ? (
+          <button
+            disabled
+            className={`${styles.countdownButton}`}>
+            Ciclo encerrado
+          </button>
+        ) : (
+            <>
+              {isActive ? (
                 <button
                   type="button"
-                  className={styles.countdownButton}
-                  onClick={startCD}>
-                  Iniciar um ciclo
+                  className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
+                  onClick={resetCD}>
+                  Abandonar ciclo
                 </button>
-              )
-            }
-          </>
-        )}
+              ) : (
+                  <button
+                    type="button"
+                    className={styles.countdownButton}
+                    onClick={startCD}>
+                    Iniciar um ciclo
+                  </button>
+                )
+              }
+            </>
+          )}
+        <div className={styles.borderLoading} style={{ width: `${loading}%` }}></div>
+      </div>
     </div>
   )
 }
