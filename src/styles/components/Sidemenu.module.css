@@ -1,0 +1,36 @@
+.sidemenuContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  background: linear-gradient(rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%)
+}
+
+.sidemenuContainer img {
+  padding: 1rem 1.25rem;
+}
+
+.sidemenuContainer > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.menuItem {
+  display: flex;
+  flex-direction: row;
+}
+
+.menuItem span {
+  height: 100%;
+  width: 4px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background-color: var(--blue-dark);
+}

@@ -10,6 +10,7 @@ import styles from '../styles/pages/Home.module.css'
 import ChallengeBox from '../components/ChallengeBox'
 import { CountdownProvider } from '../contexts/CountdownContext'
 import { ChallengesProvider } from '../contexts/ChallengesContext'
+import Sidemenu from '../components/Sidemenu'
 
 interface HomeProps {
   level: number
@@ -27,9 +28,10 @@ const Home = (props: HomeProps) => {
 
       <div className={styles.container}>
         <Head>
-          <title>Início | move.it</title>
+          <title>Início | mexa.se</title>
         </Head>
         <ExperienceBar />
+        <Sidemenu />
         <CountdownProvider>
           <section>
             <div>
