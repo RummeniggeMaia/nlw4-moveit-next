@@ -99,9 +99,21 @@
   background: rgb(255, 245, 245);
 }
 
+.challengeActive footer button.challengeFailedButton:hover {
+  color: var(--white);
+  background: var(--red);
+  transition: background-color .2s;
+}
+
 .challengeActive footer button.challengeSucceededButton {
   color: var(--green);
   background: rgb(247, 255, 245);
+}
+
+.challengeActive footer button.challengeSucceededButton:hover {
+  color: var(--white);
+  background: var(--green);
+  transition: background-color .2s;
 }
 
 .challengeActive footer button:hover {
