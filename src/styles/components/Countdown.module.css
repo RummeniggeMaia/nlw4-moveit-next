@@ -66,9 +66,20 @@
   color: var(--title)
 }
 
+.countdownButtonActive .abandonIcon {
+  width: 14px;
+  height: 14px;
+  margin-left: .5rem;
+  background: url('/icons/cancel.svg') no-repeat center;
+}
+
 .countdownButtonActive:not([disabled]):hover {
   background: var(--red);
   color: var(--white)
+}
+
+.countdownButtonActive:not([disabled]):hover .abandonIcon {
+  background: url('/icons/cancel_white.svg') no-repeat center;
 }
 
 .countdownButton:disabled {
@@ -81,9 +92,11 @@
   margin-top: 2rem;
 }
 
+.countdownButtonBox img {
+  margin-left: .5rem;
+}
+
 .borderLoading {
-  height: 4px;
-  width: 4px;
   margin-top: -4px;
   border-radius: 5px;
   border: 0px;

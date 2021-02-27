@@ -3,6 +3,7 @@ import Countdown from '../components/Countdown'
 import { ChallengesContext } from './ChallengesContext'
 
 interface CountdownContextData {
+  TIME_MATH: number
   time: number
   mins: number
   secs: number
@@ -23,8 +24,8 @@ let countdownTimeout: NodeJS.Timeout
 export const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const { startNewChallenge } = useContext(ChallengesContext)
 
-  const timeMath = 2 * 60
-  const [time, setTime] = useState(timeMath)
+  const TIME_MATH = 1 * 60
+  const [time, setTime] = useState(TIME_MATH)
   const [isActive, setIsActive] = useState(false)
   const [hasFinished, setHasFinisted] = useState(false)
 
@@ -38,7 +39,7 @@ export const CountdownProvider = ({ children }: CountdownProviderProps) => {
   const resetCD = () => {
     clearTimeout(countdownTimeout)
     setIsActive(false)
-    setTime(timeMath)
+    setTime(TIME_MATH)
     setHasFinisted(false)
   }
 
@@ -56,6 +57,7 @@ export const CountdownProvider = ({ children }: CountdownProviderProps) => {
 
   return (
     <CountdownContext.Provider value={{
+      TIME_MATH,
       time,
       mins,
       secs,

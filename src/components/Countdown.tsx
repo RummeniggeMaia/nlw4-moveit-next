@@ -8,6 +8,7 @@ let countdownTimeout: NodeJS.Timeout
 
 const Countdown = () => {
   const {
+    TIME_MATH,
     time,
     mins,
     secs,
@@ -17,7 +18,7 @@ const Countdown = () => {
     startCD
   } = useContext(CountdownContext)
 
-  const loading = Math.round((2 * 60) * 100) / time - 100
+  const loading = 100 - Math.round(100 * time) / TIME_MATH
 
   const [minL, minR] = String(mins).padStart(2, '0').split('')
   const [secL, secR] = String(secs).padStart(2, '0').split('')
@@ -41,6 +42,7 @@ const Countdown = () => {
             disabled
             className={`${styles.countdownButton}`}>
             Ciclo encerrado
+            <img src="/icons/check_circle.svg" alt="Encerrado" />
           </button>
         ) : (
             <>
@@ -50,6 +52,7 @@ const Countdown = () => {
                   className={`${styles.countdownButton} ${styles.countdownButtonActive}`}
                   onClick={resetCD}>
                   Abandonar ciclo
+                  <div className={styles.abandonIcon}></div>
                 </button>
               ) : (
                   <button
@@ -57,6 +60,7 @@ const Countdown = () => {
                     className={styles.countdownButton}
                     onClick={startCD}>
                     Iniciar um ciclo
+                    <img src="/icons/play_arrow.Svg" alt="Iniciar" />
                   </button>
                 )
               }
