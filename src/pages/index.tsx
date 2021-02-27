@@ -1,64 +1,36 @@
+import React from 'react'
 import CompletedChallenges from '../components/CompletedChallenges'
 import Countdown from '../components/Countdown'
-import ExperienceBar from "../components/ExperienceBar"
 import Profile from '../components/Profile'
 
-import Head from 'next/head'
-import { GetServerSideProps } from 'next'
-
-import styles from '../styles/pages/Home.module.css'
-import ChallengeBox from '../components/ChallengeBox'
 import { CountdownProvider } from '../contexts/CountdownContext'
-import { ChallengesProvider } from '../contexts/ChallengesContext'
-import Sidemenu from '../components/Sidemenu'
+import ChallengeBox from '../components/ChallengeBox'
 
-interface HomeProps {
-  level: number
-  currentExperience: number
-  challengesCompleted: number
-}
+import Layout from './layout'
 
-const Home = (props: HomeProps) => {
+const Home = () => {
 
   return (
-    <ChallengesProvider
-      level={props.level}
-      currentExperience={props.currentExperience}
-      challengesCompleted={props.challengesCompleted}>
+    <Layout
+      level={0}
+      currentExperience={0}
+      challengesCompleted={0}
+      title="Início">
 
-      <div className={styles.container}>
-        <Head>
-          <title>Início | mexa.se</title>
-        </Head>
-        <ExperienceBar />
-        <Sidemenu />
-        <CountdownProvider>
-          <section>
-            <div>
-              <Profile />
-              <CompletedChallenges />
-              <Countdown />
-            </div>
-            <div>
-              <ChallengeBox />
-            </div>
-          </section>
-        </CountdownProvider>
-      </div>
-    </ChallengesProvider>
+      <CountdownProvider>
+        <section>
+          <div>
+            <Profile />
+            <CompletedChallenges />
+            <Countdown />
+          </div>
+          <div>
+            <ChallengeBox />
+          </div>
+        </section>
+      </CountdownProvider>
+    </Layout>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const { level, currentExperience, challengesCompleted } = ctx.req.cookies
-
-  return {
-    props: {
-      level: Number(level),
-      currentExperience: Number(currentExperience),
-      challengesCompleted: Number(challengesCompleted)
-    }
-  }
 }
 
 export default Home

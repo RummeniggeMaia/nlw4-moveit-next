@@ -1,5 +1,7 @@
 import styles from '../styles/components/Sidemenu.module.css'
 
+import Link from 'next/link'
+
 const Sidemenu = () => {
 
   return (
@@ -12,7 +14,9 @@ const Sidemenu = () => {
         </div>
         <div className={styles.menuItem}>
           <span></span>
-          <img src="/icons/award.svg" alt="award" />
+          <Link href="/ranking">
+            <img src="/icons/award.svg" alt="award" />
+          </Link>
         </div>
       </div>
       <div></div>
