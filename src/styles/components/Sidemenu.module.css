@@ -40,10 +40,14 @@
   height: 2rem;
 }
 
-.menuItem > span {
+.menuItem > span{
   height: 100%;
   width: 4px;
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
   background-color: var(--blue-dark);
+}
+
+.menuItem > div {
+  width: 4px;
 }
