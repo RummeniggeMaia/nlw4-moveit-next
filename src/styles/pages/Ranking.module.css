@@ -1,9 +1,88 @@
 .container {
-  height: 100vh;
-  max-width: 992px;
-  margin: 0 auto;
-  padding: 2.5rem 2rem;
-
   display: flex;
   flex-direction: column;
+}
+
+.container > strong {
+  font: 500 2rem "Inter", sans-serif;
+  line-height: 5rem;
+}
+
+.table header {
+  display: grid;
+  width: 100%;
+  grid-template-columns: 10% 50% 20% 10%;
+}
+
+.table header span {
+  font: 500 1rem "Inter", sans-serif;
+  color: var(--text);
+  padding: 1rem 0rem;
+}
+
+.table main > div {
+  display: grid;
+  grid-template-columns: 10% 50% 20% 20%;
+}
+
+.table main div span {
+  background: var(--white);
+}
+
+.table main div span:last-child {
+  border-top-right-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.columnPosition { 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem 1rem;
+  font: 600 1.5rem "Inter", sans-serif;
+
+  margin-right: 5px;
+
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.columnUser {
+  display: flex;
+  flex-direction: row;
+
+  padding: 1rem;
+  align-items: center;
+}
+
+.columnUser > img {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+}
+
+.columnUser > div {
+  display: flex;
+  flex-direction: column;
+
+  margin-left: .5rem;
+}
+
+.columnUser div strong {
+  font: 600 1.25rem "Inter", sans-serif;
+}
+
+.columnUser div p img {
+  margin-right: 0.5rem;
+}
+
+.table main div span:nth-child(n+3) {
+  display: flex;
+  align-items: center;
+}
+
+.table main div span:nth-child(n+3) strong{
+  color: var(--blue);
+  margin-right: 5px;
 }
