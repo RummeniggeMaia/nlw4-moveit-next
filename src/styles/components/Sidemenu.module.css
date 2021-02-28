@@ -33,6 +33,8 @@
 
   width: 5rem;
   height: 5rem;
+
+  cursor: pointer;
 }
 
 .menuItem img {
