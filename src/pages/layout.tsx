@@ -1,4 +1,6 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useEffect } from 'react'
+import { useSession } from 'next-auth/client'
+import { useRouter } from 'next/router'
 
 import ExperienceBar from "../components/ExperienceBar"
 import Head from 'next/head'
@@ -18,6 +20,14 @@ interface LayoutProps {
 }
 
 const Layout = (props: LayoutProps) => {
+  const [session, loading] = useSession()
+  const router = useRouter()
+
+  useEffect(() => {
+    if (!session) {
+      router.push('/')
+    }
+  }, [])
 
   return (
     <ChallengesProvider

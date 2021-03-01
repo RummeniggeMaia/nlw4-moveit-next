@@ -17,6 +17,7 @@
   font-size: 1.5rem;
   font-weight: 600;
   color: var(--title);
+  margin-right: 1rem;
 }
 
 .profileContainer div p {
@@ -26,4 +27,8 @@
 
 .profileContainer div p img {
   margin-right: 0.5rem;
+}
+
+.profileContainer a {
+  color: blue
 }

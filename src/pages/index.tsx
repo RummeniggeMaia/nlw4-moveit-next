@@ -1,10 +1,12 @@
 import Link from 'next/link'
-import { signIn, signOut, useSession } from 'next-auth/client'
+import { signIn, useSession } from 'next-auth/client'
 
 import styles from '../styles/pages/Login.module.css'
+import { useRouter } from 'next/router'
 
 const Login = () => {
   const [session, loading] = useSession()
+  const router = useRouter()
 
   return (
     <div className={styles.loginContainer}>
