@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import styles from '../styles/pages/Login.module.css'
 
 const Login = () => {
@@ -15,7 +16,7 @@ const Login = () => {
           </p>
           <div>
             <input type="text" />
-            <a href="#"><img src="/icons/arrow.svg" alt="" /></a>
+            <Link href="/home" replace><a><img src="/icons/arrow.svg" alt="" /></a></Link>
           </div>
         </div>
       </section>

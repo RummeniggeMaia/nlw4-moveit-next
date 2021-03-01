@@ -11,12 +11,12 @@ const Sidemenu = () => {
 
   return (
     <div className={styles.sidemenuContainer}>
-      <img src="/icons/logo.svg" alt="Logotipo" />
+      <img src="/icons/logo2.svg" alt="Logotipo" />
       <div></div>
       <div>
-        <Link href="/">
+        <Link href="/home">
           <div className={styles.menuItem}>
-            {name === '/' ? <span></span> : <div></div>}
+            {name === '/home' ? <span></span> : <div></div>}
             <img src={`/icons/home_${name === '/' ? 'on' : 'off'}.svg`} alt="Home" />
             <div></div>
           </div>
