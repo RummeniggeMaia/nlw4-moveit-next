@@ -69,7 +69,18 @@
   flex-direction: row;
 }
 
-.loginContainer a {
+.loginContainer section > div > div a {
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--green);
+  padding: 1rem;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.loginContainer section > div > div span {
   align-items: center;
   justify-content: center;
   
@@ -78,8 +89,4 @@
 
   border-top-right-radius: 5px;
   border-bottom-right-radius: 5px;
-}
-
-.loginContainer a:hover {
-  background: var(--green);
 }
