@@ -10,9 +10,9 @@ import { ChallengesProvider } from '../contexts/ChallengesContext'
 import styles from '../styles/pages/Home.module.css'
 
 interface LayoutProps {
-  level: number
-  currentExperience: number
-  challengesCompleted: number
+  level?: number
+  currentExperience?: number
+  challengesCompleted?: number
   title: string
   children: ReactNode
 }

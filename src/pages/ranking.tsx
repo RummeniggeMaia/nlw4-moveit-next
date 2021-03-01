@@ -6,11 +6,7 @@ import Layout from './layout'
 const Ranking = () => {
 
   return (
-    <Layout
-      level={0}
-      currentExperience={0}
-      challengesCompleted={0}
-      title="Ranking">
+    <Layout title="Ranking">
 
       <div className={styles.container}>
         <strong>Leaderboard</strong>

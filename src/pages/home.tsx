@@ -11,11 +11,7 @@ import Layout from './layout'
 const Home = () => {
 
   return (
-    <Layout
-      level={0}
-      currentExperience={0}
-      challengesCompleted={0}
-      title="Início">
+    <Layout title="Início">
 
       <CountdownProvider>
         <section>
