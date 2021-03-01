@@ -1,36 +1,26 @@
-import React from 'react'
-import CompletedChallenges from '../components/CompletedChallenges'
-import Countdown from '../components/Countdown'
-import Profile from '../components/Profile'
+import styles from '../styles/pages/Login.module.css'
 
-import { CountdownProvider } from '../contexts/CountdownContext'
-import ChallengeBox from '../components/ChallengeBox'
-
-import Layout from './layout'
-
-const Home = () => {
+const Login = () => {
 
   return (
-    <Layout
-      level={0}
-      currentExperience={0}
-      challengesCompleted={0}
-      title="Início">
-
-      <CountdownProvider>
-        <section>
+    <div className={styles.loginContainer}>
+      <section>
+        <img src="/icons/simbolo.svg" alt="" />
+        <div>
+          <img src="/icons/logo.svg" alt="" />
+          <strong>Bem-vindo</strong>
+          <p>
+            <img src="/icons/github.svg" alt="" />
+            Faça login com o seu Github<br /> para começar
+          </p>
           <div>
-            <Profile />
-            <CompletedChallenges />
-            <Countdown />
+            <input type="text" />
+            <a href="#"><img src="/icons/arrow.svg" alt="" /></a>
           </div>
-          <div>
-            <ChallengeBox />
-          </div>
-        </section>
-      </CountdownProvider>
-    </Layout>
+        </div>
+      </section>
+    </div>
   )
 }
 
-export default Home
+export default Login

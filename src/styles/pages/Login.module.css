@@ -1,0 +1,85 @@
+.loginContainer {
+  display: flex;
+  background: var(--blue);
+  height: 100vh;
+}
+
+.loginContainer section {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6.25rem;
+  align-items: center;
+}
+
+.loginContainer > section > img {
+  margin-left: 2rem;
+  width: 30rem;
+  height: 30rem;
+}
+.loginContainer > section > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.loginContainer > section > div > img {
+  margin: 3rem 0rem;
+  width: 360px;
+  height: 76px;
+}
+
+.loginContainer > section > div > strong {
+  font: 400 2rem "Inter", sans-serif;
+  margin-bottom: 2rem;
+  color: var(--white)
+}
+
+.loginContainer p {
+  display: flex;
+  flex-direction: row;
+  
+  margin-bottom: 2rem;
+
+  color: var(--text-highlight)
+}
+
+.loginContainer p img {
+  margin-right: 1rem;
+}
+
+
+.loginContainer input {
+  border: none;
+  background: transparent;
+  background: linear-gradient(90deg, var(--blue-dark) 0%, var(--blue) 100%);
+
+  padding: 1rem;
+  color: var(--white);
+
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.loginContainer input:focus {
+  outline: none;
+}
+
+.loginContainer section > div > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.loginContainer a {
+  align-items: center;
+  justify-content: center;
+  
+  background: var(--blue-dark);
+  padding: 1rem;
+
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.loginContainer a:hover {
+  background: var(--green);
+}
