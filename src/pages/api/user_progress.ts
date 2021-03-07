@@ -36,7 +36,11 @@ export default async (request: NowRequest, response: NowResponse) => {
   switch (request.method) {
     case 'GET': {
       const { userName } = request.query
-      userData = await collection.findOne({ 'userName': userName })
+      if (userName) {
+        userData = await collection.findOne({ 'userName': userName })
+      } else {
+        userData = await collection.find({}).sort({ level: -1 }).toArray()
+      }
     }
     case 'POST': {
       if (typeof userName !== 'undefined') {
