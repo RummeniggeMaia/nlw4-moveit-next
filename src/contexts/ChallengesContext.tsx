@@ -34,13 +34,13 @@ interface ChallengesProviderProps {
 export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export const ChallengesProvider =
-  ({ children, ...rest }: ChallengesProviderProps) => {
+  ({ children }: ChallengesProviderProps) => {
     const [session] = useSession()
-    const [level, setLevel] = useState(rest.level ?? 1)
+    const [level, setLevel] = useState(1)
     const [currentExperience, setCurrentExperience]
-      = useState(rest.currentExperience ?? 0)
+      = useState(0)
     const [challengesCompleted, setChallengesCompleted]
-      = useState(rest.challengesCompleted ?? 0)
+      = useState(0)
     const [activeChallenge, setActiveChallenge] = useState(null)
 
     const experienceToNextLevel = Math.pow(((level + 1) * 4), 2)
@@ -71,7 +71,6 @@ export const ChallengesProvider =
     useEffect(() => {
       (async () => {
         if (session) {
-          console.log('>>>')
           await axios.patch('/api/user_progress', {
             'level': String(level),
             'currentExperience': String(currentExperience),
@@ -101,13 +100,13 @@ export const ChallengesProvider =
 
       setActiveChallenge(challenge)
 
-      new Audio('/notification.mp3').play()
+      // new Audio('/notification.mp3').play()
 
-      if (Notification.permission === 'granted') {
-        new Notification('Novo desafio 🎉', {
-          body: `Valendo ${challenge.amount} xp!`
-        })
-      }
+      // if (Notification.permission === 'granted') {
+      //   new Notification('Novo desafio 🎉', {
+      //     body: `Valendo ${challenge.amount} xp!`
+      //   })
+      // }
     }
 
     const resetChallenge = () => {

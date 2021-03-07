@@ -22,12 +22,10 @@ const connectToDatabase = async (uri: string) => {
 
 export default async (request: NowRequest, response: NowResponse) => {
 
-  const {
-    userName,
-    level,
-    currentExperience,
-    challengesCompleted,
-  } = request.body
+  let userName = request.body.userName
+  let level = Number(request.body.level)
+  let currentExperience = Number(request.body.currentExperience)
+  let challengesCompleted = Number(request.body.challengesCompleted)
 
   const db = await connectToDatabase(process.env.MONGODB_URI)
 
@@ -52,13 +50,13 @@ export default async (request: NowRequest, response: NowResponse) => {
     }
     case 'PATCH': {
       await collection.updateOne({
-        userName: userName
+        userName: userName,
+        level: { $lte: level }
       }, {
         $set: {
           level,
           currentExperience,
-          challengesCompleted,
-          userName
+          challengesCompleted
         }
       })
     }

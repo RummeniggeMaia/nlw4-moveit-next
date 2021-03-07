@@ -5,13 +5,19 @@ import Profile from '../components/Profile'
 
 import { CountdownProvider } from '../contexts/CountdownContext'
 import ChallengeBox from '../components/ChallengeBox'
+import { GetServerSideProps } from 'next'
+import axios from 'axios'
 
 import Layout from './layout'
 
-const Home = () => {
+const Home = (props) => {
 
   return (
-    <Layout title="Início">
+    <Layout
+      title="Início"
+      level={props.level}
+      currentExperience={props.currentExperience}
+      challengesCompleted={props.challengesCompleted}>
 
       <CountdownProvider>
         <section>

@@ -3,10 +3,13 @@ import styles from '../styles/pages/Ranking.module.css'
 
 import Layout from './layout'
 
-const Ranking = () => {
+const Ranking = (props) => {
 
   return (
-    <Layout title="Ranking">
+    <Layout title="Ranking"
+      level={props.level}
+      currentExperience={props.currentExperience}
+      challengesCompleted={props.challengesCompleted}>
 
       <div className={styles.container}>
         <strong>Leaderboard</strong>
