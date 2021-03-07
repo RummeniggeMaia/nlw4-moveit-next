@@ -2,6 +2,8 @@ import { createContext, useState, ReactNode, useEffect } from 'react'
 import Cookies from 'js-cookie'
 import challenges from '../../challenges.json'
 import LevelUpModal from '../components/LevelUpModal'
+import axios from 'axios'
+import { useSession } from 'next-auth/client'
 
 interface Challenge {
   type: 'body' | 'eye'
@@ -33,6 +35,7 @@ export const ChallengesContext = createContext({} as ChallengesContextData)
 
 export const ChallengesProvider =
   ({ children, ...rest }: ChallengesProviderProps) => {
+    const [session] = useSession()
     const [level, setLevel] = useState(rest.level ?? 1)
     const [currentExperience, setCurrentExperience]
       = useState(rest.currentExperience ?? 0)
@@ -45,9 +48,38 @@ export const ChallengesProvider =
     const [isLevelUpModalOpen, setIsLevelUpModalOpen] = useState(false)
 
     useEffect(() => {
-      Cookies.set('level', String(level))
-      Cookies.set('currentExperience', String(currentExperience))
-      Cookies.set('challengesCompleted', String(challengesCompleted))
+      (async () => {
+        await axios.get('/api/user_progress', {
+          params: { userName: session?.user.name }
+        }).then(res => {
+          if (!res.data.userName && session) {
+            axios.post('/api/user_progress', {
+              'level': String(level),
+              'currentExperience': String(currentExperience),
+              'challengesCompleted': String(challengesCompleted),
+              'userName': session.user.name
+            })
+          } else {
+            setLevel(+res.data.level)
+            setCurrentExperience(+res.data.currentExperience)
+            setChallengesCompleted(+res.data.challengesCompleted)
+          }
+        })
+      })()
+    }, [])
+
+    useEffect(() => {
+      (async () => {
+        if (session) {
+          console.log('>>>')
+          await axios.patch('/api/user_progress', {
+            'level': String(level),
+            'currentExperience': String(currentExperience),
+            'challengesCompleted': String(challengesCompleted),
+            'userName': session.user.name
+          })
+        }
+      })()
     }, [level, currentExperience, challengesCompleted])
 
     useEffect(() => {
