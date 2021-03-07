@@ -36,7 +36,7 @@ const Ranking = (props) => {
               <div key={key}>
                 <span className={styles.columnPosition}>{key + 1}</span>
                 <span className={styles.columnUser}>
-                  <img src="https://avatars.githubusercontent.com/u/3748273?v=4" alt={value.userName} />
+                  <img src={value.userImage} alt={value.userName} />
                   <div>
                     <strong>{value.userName}</strong>
                     <p>

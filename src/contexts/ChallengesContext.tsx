@@ -57,7 +57,8 @@ export const ChallengesProvider =
               'level': String(level),
               'currentExperience': String(currentExperience),
               'challengesCompleted': String(challengesCompleted),
-              'userName': session.user.name
+              'userName': session.user.name,
+              'userImage': session.user.image
             })
           } else {
             setLevel(+res.data.level)

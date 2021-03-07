@@ -23,6 +23,7 @@ const connectToDatabase = async (uri: string) => {
 export default async (request: NowRequest, response: NowResponse) => {
 
   let userName = request.body.userName
+  let userImage = request.body.userImage
   let level = Number(request.body.level)
   let currentExperience = Number(request.body.currentExperience)
   let challengesCompleted = Number(request.body.challengesCompleted)
@@ -46,6 +47,7 @@ export default async (request: NowRequest, response: NowResponse) => {
       if (typeof userName !== 'undefined') {
         await collection.insertOne({
           userName: userName,
+          userImage: userImage,
           level: level,
           currentExperience: currentExperience,
           challengesCompleted: challengesCompleted,
